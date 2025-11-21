@@ -1,4 +1,4 @@
-name: Deploy to S3 + CloudFront
+name: Deploy to S3 plus CloudFront
 on:
   push: { branches: [ main ] }
   workflow_dispatch:
