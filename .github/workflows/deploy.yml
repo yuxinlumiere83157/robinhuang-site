@@ -25,15 +25,13 @@ jobs:
 
       - name: Upload HTML (short cache)
         run: |
-          find dist -type f -name "*.html" -print0 | \
-            xargs -0 -I {} aws s3 cp "{}" "s3://${{ secrets.S3_BUCKET }}/$(realpath --relative-to=dist "{}")" \
-              --cache-control "no-cache, no-store, must-revalidate" \
-              --content-type "text/html; charset=utf-8" \
-              --metadata-directive REPLACE
-          aws s3 cp dist/index.html s3://${{ secrets.S3_BUCKET }}/index.html \
+          aws s3 cp dist/ s3://${{ secrets.S3_BUCKET }}/ \
+            --recursive \
+            --exclude "*" \
+            --include "*.html" \
             --cache-control "no-cache, no-store, must-revalidate" \
             --content-type "text/html; charset=utf-8" \
-            --metadata-directive REPLACE || true
+            --metadata-directive REPLACE
 
       - name: Upload assets (long cache)
         run: |
