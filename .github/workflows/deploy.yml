@@ -25,13 +25,12 @@ jobs:
 
       - name: Upload HTML (short cache)
         run: |
-          aws s3 cp dist/ s3://${{ secrets.S3_BUCKET }}/ \
-            --recursive \
+          aws s3 sync dist/ s3://${{ secrets.S3_BUCKET }}/ \
             --exclude "*" \
             --include "*.html" \
             --cache-control "no-cache, no-store, must-revalidate" \
-            --content-type "text/html; charset=utf-8" \
-            --metadata-directive REPLACE
+            --delete
+
 
       - name: Upload assets (long cache)
         run: |
