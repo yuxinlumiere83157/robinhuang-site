@@ -1,0 +1,93 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { profile } from "@/settings";
+import BetterIcon from "@/components/ui/BetterIcon.astro";
+import List from "@/components/ui/List.astro";
+import { RESEARCH_ICONS } from "@/data/researchIcons";
+
+const { research_areas } = profile;
+---
+
+<Layout title="About | Robin Huang">
+  <div class="prose max-w-none">
+    <h1 class="text-3xl font-bold mb-8">About</h1>
+
+    <div class="mb-12">
+      <p class="text-lg mb-6">
+        I’m Robin Huang, an interdisciplinary computing and creative-technology graduate. I’m focused on practical
+        software engineering with a backend-first mindset: maintainable code, clear APIs, and reliable data handling.
+      </p>
+
+      <p class="text-lg mb-6">
+        I’ve built interactive systems in Unity (C#) integrated with external inputs (Arduino sensors and computer
+        vision), and contributed to a team backend using Python/Flask for real-time processing. I also deployed this
+        portfolio site on AWS (S3 + CloudFront + Route 53 + ACM) with CI/CD via GitHub Actions, and I’m evolving it
+        into a full-stack project.
+      </p>
+
+      <p class="text-lg mb-0">
+        Currently I’m strengthening: authentication, SQL fundamentals, API design, and cloud production practices.
+        I’m open to internships and junior backend / full-stack roles.
+      </p>
+    </div>
+
+    <h2 class="text-2xl font-bold mb-6">Focus Areas</h2>
+
+    <div class="grid gap-8 mb-12">
+      {
+        research_areas.map((area) => (
+          <div class="flex gap-6 items-start">
+            <BetterIcon>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="2"
+                class="size-6 stroke-accent"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d={
+                    RESEARCH_ICONS[area.field as keyof typeof RESEARCH_ICONS]?.path ||
+                    RESEARCH_ICONS["computer-science"].path
+                  }
+                />
+              </svg>
+            </BetterIcon>
+            <div>
+              <h3 class="text-xl font-semibold mb-2">{area.title}</h3>
+              <p class="text-base">{area.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <List
+      listTitle="Current Work"
+      listItems={[
+        {
+          title: "Portfolio + Blog (AWS)",
+          description:
+            "Improving performance, caching, and security headers; expanding content and project showcases."
+        },
+        {
+          title: "Full-stack Feature Build",
+          description:
+            "Adding authentication + a simple topic-based message board to demonstrate backend, database, and deployment."
+        },
+        {
+          title: "Foundations",
+          description:
+            "Deepening SQL, API design, validation/error handling, and cloud fundamentals through shipped practice."
+        }
+      ]}
+    />
+
+    <h2 class="text-2xl font-bold mb-6">What I Care About</h2>
+    <p class="text-lg mb-6">
+      I value readable code, predictable systems, and fast feedback loops. I enjoy building features end-to-end, documenting decisions, and shipping improvements regularly.
+    </p>
+  </div>
+</Layout>
