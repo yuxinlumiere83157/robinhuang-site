@@ -2,6 +2,7 @@
 import Layout from '@/layouts/Layout.astro'
 import { experiences, education, skills, publications } from '../data/cv'
 import CvTimeline from '@/components/ui/CvTimeline.astro'
+import { certificates } from '@/data/certificates'
 
 import type { Experience, Education, Publication } from '../types/cv'
 import List from '@/components/ui/List.astro'
@@ -81,4 +82,46 @@ if (education.length > 0) {
 			</section>
 		)
 	}
+	{
+	certificates.length > 0 && (
+		<section class="mb-12">
+		<h2 class="text-2xl font-bold mb-6 border-b pb-2">Certificates</h2>
+
+		<ul class="space-y-3">
+			{certificates.map((c) => (
+			<li class="border rounded-xl p-4">
+				<div class="font-semibold">{c.name}</div>
+				<div class="text-sm opacity-80">
+				{c.issuer}{c.date ? ` · ${c.date}` : ''}
+				</div>
+
+				{(c.credentialUrl || c.pdfPath) && (
+				<div class="mt-2 flex gap-4 text-sm">
+					{c.credentialUrl && (
+					<a class="link" href={c.credentialUrl} target="_blank" rel="noopener">
+						Verify
+					</a>
+					)}
+					{c.pdfPath && (
+					<a class="link" href={c.pdfPath} target="_blank" rel="noopener">
+						PDF
+					</a>
+					)}
+				</div>
+				)}
+
+				{c.highlights?.length > 0 && (
+				<ul class="mt-2 list-disc pl-5 text-sm opacity-90">
+					{c.highlights.map((h) => (
+					<li>{h}</li>
+					))}
+				</ul>
+				)}
+			</li>
+			))}
+		</ul>
+		</section>
+	)
+	}
+
 </Layout>

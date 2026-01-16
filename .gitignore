@@ -1,24 +1,44 @@
 # build output
 dist/
-
-# generated types
 .astro/
 
 # dependencies
 node_modules/
 
 # logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+lerna-debug.log*
 
 # environment variables
 .env
+.env.*
+!.env.example
 .env.production
 
-# macOS-specific files
+# caches / tooling
+.npm/
+.eslintcache
+.stylelintcache
+coverage/
+.nyc_output/
+.cache/
+.parcel-cache/
+.vite/
+
+# macOS
 .DS_Store
 
-# jetbrains setting folder
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+desktop.ini
+
+# IDEs
 .idea/
+.vscode/
