@@ -22,8 +22,8 @@ const calculatedContainerSize = activeSocial.length <= 5 ? 'size-12' : activeSoc
 
 	<!-- Email -->
 	{social.email !== '' &&
-		<a href={`mailto:${social.email}`}  class={`${calculatedContainerSize} inline-flex items-center justify-center rounded-xl hover:bg-primary/20 transition-all duration-300`}>
-			<Envelope class={calculatedIconSize} fill="currentColor" />
+		<a href={`mailto:${social.email}?subject=Portfolio%20Inquiry&body=Hi%20Robin%2C%0A%0A`} class={`${calculatedContainerSize} inline-flex items-center justify-center rounded-xl hover:bg-primary/20 transition-all duration-300`}>
+		 <Envelope class={calculatedIconSize} fill="currentColor" />
 		</a>
 	}
 
