@@ -34,7 +34,7 @@ export const profile = {
 
 // Set equal to an empty string to hide the icon that you don't want to display
 export const social = {
-	email: 'mailto:[contact@robinhuang.nz]',
+	email: 'contact@robinhuang.nz',
 	linkedin: 'https://www.linkedin.com/in/yuxin-h-4917232a3/',
 	x: '', // hide by default
 	bluesky: '',
